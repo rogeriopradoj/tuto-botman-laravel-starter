@@ -29,7 +29,7 @@ Agora, é hora de mexer na aplicação:
 
 2. Edite o arquivo .env` para [conectar com Telegram](https://github.com/mpociot/botman#connect-with-your-messaging-service) (é aqui que você vai usar aquele ACCESS TOKEN lá em cima).
 
-3. Edite as configurações *TINEGOCIOS_GIT_* também no arquivo `.env`.
+3. Edite as configurações *TINEGOCIOS_* também no arquivo `.env`.
 
 4. Depois disso é só rodar o servidor web e servir a aplicação numa url pública (o jeito mais fácil na minha máquina foi rodando `valet link` e depois `valet share`). No meu caso, a URL ficou parecida com essa daqui: <https://a1234567.ngrok.io/>
 
@@ -56,6 +56,10 @@ Pronto, agora, acesse essa URL final no seu navegador mesmo, você deve receber 
 - hospedar a aplicação em um hosting real PaaS ([1](https://cloud.google.com/community/tutorials/run-laravel-on-appengine-flexible), [2](http://www.easylaravelbook.com/blog/2015/01/31/deploying-a-laravel-application-to-heroku/)).
 - ajustar o `.env` para `APP_ENV=production` e `APP_DEBUG=false`
 - ajustar a "URL final" do [Telegram](https://core.telegram.org/bots/api#setwebhook)
+
+## E depois?
+
+- Colocar NLP (natural language processing): https://rasa.ai/, https://wit.ai/, https://api.ai/, https://www.luis.ai/, https://www.ibm.com/watson/ etc.
  
 
 ## Fontes
