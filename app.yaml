@@ -1,0 +1,17 @@
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: public
+
+# required on some platforms so ".env" is not skipped
+skip_files: false
+
+env_variables:
+  # The values here will override those in ".env". This is useful for
+  # production-specific configuration. However, feel free to set these
+  # values in ".env" instead if you prefer.
+  APP_LOG: errorlog
+  STORAGE_DIR: /tmp
+  APP_ENV: production
+  APP_DEBUG: false

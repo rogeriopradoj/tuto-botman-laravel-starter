@@ -43,7 +43,7 @@ Você tem várias formas de fazer isso, a mais fácil:
 
 - pegue seu ACCESS TOKEN do Bot (exemplo: `123456789:Adfkj9jjdf9j9jdf9jRkjerkjMijijJUd11`)
 - pegue a sua URL pública da aplicação com a rota `/botman/` (exemplo: <https://a1234567.ngrok.io/botman/>)
-- ajuste na "URL final" `https://api.telegram.org/bot<ACCESS TOKEN>/setWebhook?url=<URL PÚBLICA DA APLICAÇÃO>` (exemplo: <https://api.telegram.org/bot123456789:Adfkj9jjdf9j9jdf9jRkjerkjMijijJUd11/setWebhook?url=https://a1234567.ngrok.io/botman/>)
+- ajuste na "URL final" `https://api.telegram.org/bot<ACCESS TOKEN>/setWebhook?url=<URL PÚBLICA DA APLICAÇÃO>/botman/` (exemplo: <https://api.telegram.org/bot123456789:Adfkj9jjdf9j9jdf9jRkjerkjMijijJUd11/setWebhook?url=https://a1234567.ngrok.io/botman/>)
 
 Pronto, agora, acesse essa URL final no seu navegador mesmo, você deve receber a seguinte resposta que está tudo ok:
 
@@ -51,16 +51,29 @@ Pronto, agora, acesse essa URL final no seu navegador mesmo, você deve receber 
 {"ok":true,"result":true,"description":"Webhook was set"}
 ```
 
+### Colocando a aplicação em um hosting real PaaS
+
+A plataforma que usei foi [Google Cloud App Engine Flexible Environment](https://cloud.google.com/appengine/) seguindo [as orientações daqui](https://cloud.google.com/community/tutorials/run-laravel-on-appengine-flexible) (outra opção seria via [Heroku](http://www.easylaravelbook.com/blog/2015/01/31/deploying-a-laravel-application-to-heroku/)).
+
+Aproveitei também para usar o [Docker](https://www.docker.com/) para rodar os comandos Google Cloud SDK em vez de fazer a instalação na minha própria máquina.
+
+Seguem passos:
+
+1. Criar o projeto Google Cloud em <https://console.cloud.google.com>.
+
+2. Habilitar o Billing no projeto em <https://console.cloud.google.com/billing>.
+
+3. Baixar a imagem Docker do SDK: `docker pull google/cloud-sdk`
+
+4. Inicializar o ambiente do SDK na minha máquina e vinculei com o projeto Google Cloud: `docker run -t -i --name gcloud-config google/cloud-sdk gcloud init`
+
+5. Fazer o deploy da aplicação: `docker run --rm -ti -v `pwd`:/apps -w="/apps" --volumes-from gcloud-config google/cloud-sdk gcloud app deploy`
+
+6. Registrar a URL do projeto gerada pelo Google Cloud no [Telegram](https://core.telegram.org/bots/api#setwebhook):`https://api.telegram.org/bot<ACCESS TOKEN>/setWebhook?url=<URL DO PROJETO>/botman/` (exemplo: <https://api.telegram.org/bot123456789:Adfkj9jjdf9j9jdf9jRkjerkjMijijJUd11/setWebhook?url=https://url-do-projeto.appspot.com/botman/>).
+
 ## Próximas fases
 
-- hospedar a aplicação em um hosting real PaaS ([1](https://cloud.google.com/community/tutorials/run-laravel-on-appengine-flexible), [2](http://www.easylaravelbook.com/blog/2015/01/31/deploying-a-laravel-application-to-heroku/)).
-- ajustar o `.env` para `APP_ENV=production` e `APP_DEBUG=false`
-- ajustar a "URL final" do [Telegram](https://core.telegram.org/bots/api#setwebhook)
-
-## E depois?
-
-- Colocar NLP (natural language processing): https://rasa.ai/, https://wit.ai/, https://api.ai/, https://www.luis.ai/, https://www.ibm.com/watson/ etc.
- 
+Colocar NLP (natural language processing): https://rasa.ai/, https://wit.ai/, https://api.ai/, https://www.luis.ai/, https://www.ibm.com/watson/ etc.
 
 ## Fontes
 - <http://christoph-rumpel.com/2017/03/Build-A-Telegram-Group-Bot/>
