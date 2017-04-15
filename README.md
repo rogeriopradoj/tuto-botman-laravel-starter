@@ -2,6 +2,12 @@
 
 Para fazer o tutorial, o Bot criado foi apenas no Telegram: é o [@TiNegociosBot](https://t.me/TiNegociosBot). No entanto, a biblioteca [BotMan](https://botman.io/) permite usar o mesmo código para criar a estrutura de Bots para [várias plataformas](https://botman.io/1.5/configuration).
 
+## Lista de arquivos efetivamente alterados
+
+- [routes/botman](routes/botman.php)
+- [BotManController](app/Http/Controllers/BotManController.php)
+- [TiNegociosBotConversation](app/Conversations/TiNegociosBotConversation.php)
+
 ## Requisitos
 
 - Conta no Telegram
