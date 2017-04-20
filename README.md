@@ -73,7 +73,7 @@ Seguem passos:
 
 4. Inicializar o ambiente do SDK na minha máquina e vinculei com o projeto Google Cloud: `docker run -t -i --name gcloud-config google/cloud-sdk gcloud init`
 
-5. Fazer o deploy da aplicação: `docker run --rm -ti -v `pwd`:/apps -w="/apps" --volumes-from gcloud-config google/cloud-sdk gcloud app deploy`
+5. Fazer o deploy da aplicação: ```docker run --rm -ti -v `pwd`:/apps -w="/apps" --volumes-from gcloud-config google/cloud-sdk gcloud app deploy```
 
 6. Registrar a URL do projeto gerada pelo Google Cloud no [Telegram](https://core.telegram.org/bots/api#setwebhook):`https://api.telegram.org/bot<ACCESS TOKEN>/setWebhook?url=<URL DO PROJETO>/botman/` (exemplo: <https://api.telegram.org/bot123456789:Adfkj9jjdf9j9jdf9jRkjerkjMijijJUd11/setWebhook?url=https://url-do-projeto.appspot.com/botman/>).
 
